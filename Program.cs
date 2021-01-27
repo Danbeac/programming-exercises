@@ -6,7 +6,8 @@ namespace programming_exercises
     {
         static void Main(string[] args)
         {
-            FuncionAlgBubbleSort();
+            //FuncionAlgBubbleSort();
+            FuncionAlgSelectionSort();
         }
 
         public static void FuncionAlgBubbleSort()
@@ -24,6 +25,31 @@ namespace programming_exercises
                         arr[j+1] = temp;
                     }
                 }
+            }
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            
+        }
+
+        public static void FuncionAlgSelectionSort()
+        {
+            int[] arr = new int[]{5,7,1,9,12,10,16,20,3};
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                int index = i;
+                
+                for(int j = i + 1;j < arr.Length; j++)
+                {
+                    if(arr[index] > arr[j])
+                    {
+                        index = j;
+                    }
+                }
+                (arr[i],arr[index]) = (arr[index],arr[i]);
             }
 
             for(int i = 0; i < arr.Length; i++)
