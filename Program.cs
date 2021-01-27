@@ -7,7 +7,8 @@ namespace programming_exercises
         static void Main(string[] args)
         {
             //FuncionAlgBubbleSort();
-            FuncionAlgSelectionSort();
+            //FuncionAlgSelectionSort();
+            FuncionInsertionSort();
         }
 
         public static void FuncionAlgBubbleSort()
@@ -50,6 +51,31 @@ namespace programming_exercises
                     }
                 }
                 (arr[i],arr[index]) = (arr[index],arr[i]);
+            }
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            
+        }
+
+        private static void FuncionInsertionSort()
+        {
+            int[] arr = {59,74,86,94,78,57,64,85,79};
+            
+            for(int i = 0; i < arr.Length;i++)
+            {
+                var val = arr[i];
+                int index = i;
+
+                while(index > 0 && arr[index-1] > val)
+                {
+                    arr[index] = arr[index-1];
+                    index = index - 1;
+                } 
+
+                arr[index] = val;
             }
 
             for(int i = 0; i < arr.Length; i++)
