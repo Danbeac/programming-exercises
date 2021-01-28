@@ -5,13 +5,22 @@ namespace programming_exercises
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
+            //Part 1
             //FuncionNumeroPar();
             //FuncionPalabraMasLarga();
             //FuncionOrdenarNumeros();            
             //FuncionSaludar();
             //FuncionSumaDeNumeros();
             //FuncionSumaMultiplicar();
+
+            //Part 2
+            //FuncionRestaDePizzas();
+            //FuncionEdadPastAndFuture();
+            //FuncionWordAlRevez();
+            //FuncionBackword();
+            //CalculadorDeDias();
+            //billRestaurant();
         }
 
         private static void FuncionNumeroPar()
@@ -136,5 +145,147 @@ namespace programming_exercises
 
             Console.WriteLine("Datos de entrada:" + Num1 + ", " + Num2 + ", " + Num3 + "\n Resultado: " + result);
         }
+
+        private static void FuncionRestaDePizzas()
+        {
+            Console.WriteLine("Cuantas rebanadas de pizza trajiste !?");
+            int rebanadasPizza =Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("En este caso X = " + rebanadasPizza + "\n Ahora dime cuantas se han comido ?");
+            int rebanadasComidas =Convert.ToInt32(Console.ReadLine());
+
+            int rebanadasRestantes = rebanadasPizza - rebanadasComidas;
+            Console.WriteLine("Ahora resulta que Y = " + rebanadasComidas + "\n ..por ende Z = " + rebanadasRestantes + "\n Lo que equivale a la cantidad de pizzas que aun tienes posibilidades de comer ;)");
+        }
+
+        private static void FuncionEdadPastAndFuture()
+        {
+            Console.WriteLine("Hola !! \n Soy Anacleta y puedo saber tu futuro y tu pasado..");
+            Console.WriteLine("Ahora que ya me conoces.. dime tu nombre y tu edad separada por una coma :D");
+            string nameAndAge = Console.ReadLine();
+            string[] values = nameAndAge.Split(",");
+
+            string name = values[0];
+            string Age = values[1];
+
+            int age = Convert.ToInt32(Age);
+
+            int pastAge = age - 1;
+            int futureAge = age + 1;
+
+            Console.WriteLine(name + " el año pasado tenías "+ pastAge +" años y el próximo año cumplirás " + futureAge + " años.");
+        }
+
+        private static void FuncionWordAlRevez()
+        {
+            var backwardsword = "";
+            var amountLetters = 0;
+            int itinerador = 0;
+
+            Console.WriteLine("Bienvenido !! \n Escribe la palabra que quieras para volverla al revez:");
+            string word = Console.ReadLine();
+            amountLetters = word.Length;
+
+            char[] arr = new char[amountLetters];
+            
+            //Llena el array con las letras de la palabra
+            foreach(char letter in word)
+            {
+                arr[itinerador] = Convert.ToChar(letter);
+                itinerador++;
+            }
+
+            //Transcribe la palabra al revez
+            for(int i = amountLetters-1; i >= 0; i--)
+            {
+                backwardsword += arr[i];
+            }
+
+            Console.WriteLine("Palabra al revez:");
+            Console.WriteLine(backwardsword);
+        }
+
+        private static void FuncionBackword()
+        {
+            var backwardsword = "";
+            var size = 0;
+
+            Console.WriteLine("Bienvenido !! \n Escribe la palabra que quieras para volverla al revez:");
+            string word = Console.ReadLine();
+            size = word.Length;
+            
+
+            //Transcribe la palabra al revez
+            for(int i = size-1; i >= 0; i--)
+            {
+                backwardsword += word[i];
+            }
+
+            Console.WriteLine("Palabra al revez:");
+            Console.WriteLine(backwardsword);
+        }
+
+        public static void CalculadorDeDias()
+        {
+            int dias = 0;
+            int hoursValue = 0;
+            int minutesValue = 0;
+            int secondsValue = 0;
+            int hoursInADay = 24;
+            int minutesInAHour = 60;
+            int secondsInAMinute = 60;
+
+            Console.WriteLine("Escribe el numero de dias que quieres calcular:");
+            dias = Convert.ToInt32(Console.ReadLine());
+
+            //Se calculan horas x dias
+             hoursValue = dias * hoursInADay;
+
+            //Se calculan minutos x dias
+            minutesValue = dias * (hoursInADay * minutesInAHour);
+
+            //Se calculan minutos x dias
+            secondsValue = dias * ((hoursInADay * minutesInAHour) * secondsInAMinute);
+
+            Console.WriteLine("Estos son los resultados: \n");
+            Console.WriteLine(" Horas/Hours: \n "+ hoursValue + " \n Minutos/Minutes: \n " + minutesValue + " \n Segundos/Seconds: \n " + secondsValue);
+        }
+
+        public static void billRestaurant()
+        {
+            Console.WriteLine("Restaurante la perrera del chavo \n Indicanos cuanto es el total a pagar:");
+            int total = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Indicanos entre cuantas personas se dividará la cuenta:");
+            int people = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Deseas dejar propina? \n Marca true si lo deseas o false en caso contrario");
+            bool flagPropina = Convert.ToBoolean(Console.ReadLine());   
+            int totalperPerson = total / people;
+            int totalBill = 0;
+
+            if(flagPropina)
+            {
+                Console.WriteLine("Indicanos el valor en porcentaje % de tu propina:");
+                int porcentajePropina = Convert.ToInt32(Console.ReadLine());
+
+                int propina = total * porcentajePropina / 100;
+                totalBill = total + propina;
+
+                totalperPerson = totalBill / people;
+            }
+
+
+            Console.WriteLine("======================================================================");
+            Console.WriteLine("Resultado Bill Perrera el Chavo:  ");
+            Console.WriteLine("Total: " + total);
+            if(flagPropina){
+                Console.WriteLine("Total + Propina: " + totalBill);
+            }
+
+            Console.WriteLine("Cuenta dividida entre " + people + " personas");
+            Console.WriteLine("Valor por persona: ");
+            Console.WriteLine("$" + totalperPerson);
+            Console.WriteLine("======================================================================");
+
+        } 
     }
 }
